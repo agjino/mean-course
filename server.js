@@ -6,4 +6,10 @@ const port = process.env.PORT || 3000;
 app.set('port', port);
 const server = http.createServer(app);
 
-server.listen(port);
+server.on("error", function(error) {
+  console.log(error);
+});
+server.on("listening", function() {
+  console.log('...listening...');
+});
+server.listen(port); 
